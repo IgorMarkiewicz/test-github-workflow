@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    """Funkcja"""
+    """Funkcja wykonywana"""
     return '<h1>Hello WSB! Greetings from Flask!</h1>'
 
 
