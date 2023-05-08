@@ -1,0 +1,36 @@
+name: Github actions demo
+
+on:
+  push:
+    branches:
+      -main
+  pull_request:
+    branches:
+      -main
+      
+jobs:
+  wersja_pythona:
+    runs-on: ubuntu-latest
+    steps:
+    - name: pokazanie wersji Pythona
+      run: python --version
+      
+  pylint:
+    runs-on: ubuntu-latest
+    steps:
+    - name: sprawdzenie kodu
+      uses: actions/checkout@v2
+      
+    - name: instalacja Pythona
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3>x'
+    
+    - name: aktualizacjia pip
+      run: pip install --upgrade pip
+      
+    - name: instalacja requirements
+      run: pip install -r requirements.txt
+      
+    - name: włączenie Pylinta
+      run: pylint app.py
